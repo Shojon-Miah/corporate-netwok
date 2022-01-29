@@ -1,0 +1,81 @@
+
+NAT_Configuration
+...................................................
+
+User Access Verification
+
+Password: 
+
+HQ_R>en
+Password: 
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#int fa 0/0
+HQ_R(config-if)#                                                       
+HQ_R(config-if)#ip na
+HQ_R(config-if)#ip nat ?
+  inside   Inside interface for address translation
+  outside  Outside interface for address translation
+HQ_R(config-if)#ip nat ou
+HQ_R(config-if)#ip nat outside 
+HQ_R(config-if)#exit
+HQ_R(config)#
+HQ_R(config)#int fa 0/1.1
+HQ_R(config-subif)#ip nat in
+HQ_R(config-subif)#ip nat inside 
+HQ_R(config-subif)#exit
+HQ_R(config)#int fa 0/1.2
+HQ_R(config-subif)#ip nat inside 
+HQ_R(config-subif)#exit
+HQ_R(config)#int fa 0/1.3
+HQ_R(config-subif)#ip nat inside 
+HQ_R(config-subif)#exit
+HQ_R(config)#int fa 0/1.4
+HQ_R(config-subif)#ip nat inside 
+HQ_R(config-subif)#exit
+HQ_R(config)#int fa 0/1.5
+HQ_R(config-subif)#ip nat inside 
+HQ_R(config-subif)#exit
+HQ_R(config)#
+HQ_R(config)#ip acc
+HQ_R(config)#ip access-list ?
+  extended  Extended Access List
+  standard  Standard Access List
+HQ_R(config)#ip access-list sta
+HQ_R(config)#ip access-list standard ?
+  <1-99>  Standard IP access-list number
+  WORD    Access-list name
+HQ_R(config)#ip access-list standard NAT
+HQ_R(config-std-nacl)#?
+  <1-2147483647>  Sequence Number
+  default         Set a command to its defaults
+  deny            Specify packets to reject
+  exit            Exit from access-list configuration mode
+  no              Negate a command or set its defaults
+  permit          Specify packets to forward
+  remark          Access list entry comment
+HQ_R(config-std-nacl)#per
+HQ_R(config-std-nacl)#permit ?
+  A.B.C.D  Address to match
+  any      Any source host
+  host     A single host address
+HQ_R(config-std-nacl)#permit 192.168.20.0 ?
+  A.B.C.D  Wildcard bits
+  <cr>
+HQ_R(config-std-nacl)#permit 192.168.20.0 0.0.0.255
+HQ_R(config-std-nacl)#ip na
+HQ_R(config-std-nacl)#ip na ?
+% Unrecognized command
+HQ_R(config-std-nacl)#ip nat ?
+% Unrecognized command
+HQ_R(config-std-nacl)#permit 192.168.40.0 0.0.0.255
+HQ_R(config-std-nacl)#exit
+HQ_R(config)#
+
+HQ_R(config)#ip nat inside source list NAT interface fastEthernet 0/0 ove
+HQ_R(config)#ip nat inside source list NAT interface fastEthernet 0/0 overload 
+HQ_R(config)#
+HQ_R(config)#do wr
+Building configuration...
+[OK]
+HQ_R(config)#

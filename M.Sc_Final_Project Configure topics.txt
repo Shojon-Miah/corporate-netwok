@@ -1,0 +1,39 @@
+
+
+M.Sc_Final_Project Configure topics (2nd Semister_2021)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. MAC bind all switch   port  
+    with maximum 2  MAC and Violation 
+    should be Shut down
+
+2. Ether Channel with 4  port
+
+3. Inter Vlan
+
+4. DHCP(51-100)
+   VLAN_10 =192.168.10.0/24
+   VLAN_20 =192.168.20.0/24
+   VLAN_30 =192.168.30.0/24
+   VLAN_40 =192.168.40.0/24
+   VLAN_50 =192.168.50.0/24
+
+5. Switch-1 & 2 only allow there running VLAN
+
+6. Vlan_20 can't access Vlan_40
+
+7. NAT VLAN_20, VLAN_40
+
+8. EIGRP
+   13.13.13.0/24
+    25.25.25.0/24
+
+9. GRE Tunnel
+    10.10.10.0/24
+
+10. OSPF
+     192.168.10.0/24
+     192.168.30.0/24
+     192.168.50.0/24
+ 
+

@@ -1,0 +1,78 @@
+
+
+Vlan add, remove , allow
+..........................................................................................
+Core_Sw(config)#
+Core_Sw(config)#int po
+Core_Sw(config)#int port-channel 1
+Core_Sw(config-if)#switchport trunk allowed vlan none 
+Port        Vlans allowed and active in management domain
+Po1         none
+Po2         1,10,20,30,40,50
+Gig0/1      1,10,20,30,40,50
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Po1         none
+Po2         1,10,20,30,40,50
+Gig0/1      1,10,20,30,40,50
+
+Core_Sw(config-if)#
+Core_Sw(config-if)#switchport trunk allowed vlan ?
+  WORD    VLAN IDs of the allowed VLANs when this port is in trunking mode
+  add     add VLANs to the current list
+  all     all VLANs
+  except  all VLANs except the following
+  none    no VLANs
+  remove  remove VLANs from the current list
+Core_Sw(config-if)#switchport trunk allowed vlan add ?
+  <1-4094>  VLAN ID of a allowed VLAN when this port is in trunking mode
+Core_Sw(config-if)#switchport trunk allowed vlan add 20
+Core_Sw(config-if)#switchport trunk allowed vlan add 30
+Core_Sw(config-if)#switchport trunk allowed vlan add 10
+Core_Sw(config-if)#exit
+Core_Sw(config)#
+
+
+
+Core_Sw(config)#int po
+Core_Sw(config)#int port-channel 2
+Core_Sw(config-if)#switchport trunk allowed vlan none 
+Core_Sw(config-if)#do sh int tru
+Core_Sw(config-if)#do sh int tr
+Port        Mode         Encapsulation  Status        Native vlan
+Po1         on           802.1q         trunking      1
+Po2         on           802.1q         trunking      1
+Gig0/1      on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Po1         10,20,30
+Po2         
+Gig0/1      1-1005
+
+Port        Vlans allowed and active in management domain
+Po1         10,20,30
+Po2         none
+Gig0/1      1,10,20,30,40,50
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Po1         10,20,30
+Po2         none
+Gig0/1      1,10,20,30,40,50
+
+Core_Sw(config-if)#switchport trunk allowed vlan ?
+  WORD    VLAN IDs of the allowed VLANs when this port is in trunking mode
+  add     add VLANs to the current list
+  all     all VLANs
+  except  all VLANs except the following
+  none    no VLANs
+  remove  remove VLANs from the current list
+Core_Sw(config-if)#switchport trunk allowed vlan ad
+Core_Sw(config-if)#switchport trunk allowed vlan add 30
+Core_Sw(config-if)#switchport trunk allowed vlan add 40
+Core_Sw(config-if)#switchport trunk allowed vlan add 50
+Core_Sw(config-if)#exit
+Core_Sw(config)#do wr
+Building configuration...
+[OK]
+Core_Sw(config)#^Z
+Core_Sw#

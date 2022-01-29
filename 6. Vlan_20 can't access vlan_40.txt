@@ -1,0 +1,32 @@
+
+
+Vlan_20 can't access vlan_40
+..........................................................................................
+User Access Verification
+
+HQ_R>en
+Password: 
+Password: 
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#ip acc
+HQ_R(config)#ip access-list extended sujon
+HQ_R(config-ext-nacl)#deny ip 192.168.20.1 0.0.0.255 192.168.40.1 0.0.0.255 
+HQ_R(config-ext-nacl)#permit ip any any
+HQ_R(config-subif)#ip access-group sujon ?
+  in   inbound packets
+  out  outbound packets
+HQ_R(config-subif)#ip access-group sujon in
+HQ_R(config-subif)#do sh access list
+HQ_R(config-subif)#exit
+HQ_R(config)#do sh acces
+HQ_R(config)#do sh access-list
+Extended IP access list sujon
+    10 deny ip 192.168.20.0 0.0.0.255 192.168.40.0 0.0.0.255
+    20 permit ip any any
+
+HQ_R(config)#do wr
+Building configuration...
+[OK]
+HQ_R(config)#
+HQ_R(config)#

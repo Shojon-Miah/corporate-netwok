@@ -1,0 +1,14 @@
+
+
+
+What OSI layer is GRE?
+GRE is defined by RFC 2784 and as a tunneling protocol, 
+carries OSI layer 3 protocols in the network. GRE creates 
+a private point-to-point connection, just like that of a virtual private network.
+
+What is the benefit of GRE tunnel?
+The advantage of GRE over other tunneling protocols is that 
+it can encapsulate broadcast, multicast traffic (multicast streaming 
+or routing protocols) or other non-IP protocols. GRE packets can be 
+protected by using Internet Protocol Security (IPSec) ensuring confidentiality 
+and integrity of the tunneled traffic.

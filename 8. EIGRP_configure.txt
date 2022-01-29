@@ -1,0 +1,84 @@
+
+
+EIGRP_configure
+..................................................................................................
+
+Password: 
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#tou
+HQ_R(config)#rou
+HQ_R(config)#router ?
+  bgp    Border Gateway Protocol (BGP)
+  eigrp  Enhanced Interior Gateway Routing Protocol (EIGRP)
+  ospf   Open Shortest Path First (OSPF)
+  rip    Routing Information Protocol (RIP)
+HQ_R(config)#router ei
+HQ_R(config)#router eigrp ?
+  <1-65535>  Autonomous system number
+HQ_R(config)#router eigrp 10
+HQ_R(config-router)#no auto-summary 
+HQ_R(config-router)#do sh ip route
+HQ_R(config-router)#
+HQ_R(config-router)#net
+HQ_R(config-router)#network 13.13.13.0 ?
+  A.B.C.D  EIGRP wild card bits
+  <cr>
+HQ_R(config-router)#network 13.13.13.0 
+HQ_R(config-router)#
+%DUAL-5-NBRCHANGE: IP-EIGRP 10: Neighbor 13.13.13.2 
+(FastEthernet0/0) is up: new adjacency
+HQ_R(config-router)#
+HQ_R(config-router)#exit
+HQ_R(config)#do wr
+Building configuration...
+[OK]
+HQ_R(config)#
+
+
+Router>en
+Password: 
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#rou
+Router(config)#router ei
+Router(config)#router eigrp 10
+Router(config-router)#no auto-summary 
+Router(config-router)#do sh ip route
+Router(config-router)#net
+Router(config-router)#network 13.13.13.0
+Router(config-router)#
+%DUAL-5-NBRCHANGE: IP-EIGRP 10: Neighbor 13.13.13.1 
+(FastEthernet0/0) is up: new adjacency
+
+Router(config-router)#network 25.25.25.0
+Router(config-router)#exit
+Router(config)#
+
+
+Password: 
+Br_Router1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Br_Router1(config)#rou
+Br_Router1(config)#router ei
+Br_Router1(config)#router eigrp 10
+Br_Router1(config-router)#no au
+Br_Router1(config-router)#no auto-summary 
+Br_Router1(config-router)#
+Br_Router1(config-router)#do sh ip route
+Br_Router1(config-router)#net
+Br_Router1(config-router)#network 25.25.25.0
+Br_Router1(config-router)#
+%DUAL-5-NBRCHANGE: IP-EIGRP 10: Neighbor 25.25.25.1 
+(FastEthernet0/0) is up: new adjacency
+
+Br_Router1(config-router)#network 192.168.6.0
+Br_Router1(config-router)#exit
+Br_Router1(config)#do wr
+Building configuration...
+[OK]
+Br_Router1(config)#
+Br_Router1(config)#
+Br_Router1(config)#
+Br_Router1(config)#
+

@@ -1,0 +1,57 @@
+
+Br_Router1_configure
+ - - - - -- - - -- - - -- - -- - - -- 
+
+Press RETURN to get started!
+Router(config)#int fa 0/1
+Router(config-if)#ip add 192.168.6.1 255.255.255.0 
+Router(config-if)#no shu
+Router(config-if)#no shutdown 
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+Router(config-if)#exit
+Router(config)#
+Router(config)#ip dh
+Router(config)#ip dhcp ?
+  excluded-address  Prevent DHCP from assigning certain addresses
+  pool              Configure DHCP address pools
+  relay             DHCP relay agent parameters
+Router(config)#ip dhcp excl
+Router(config)#ip dhcp excluded-address 192.168.6.1 ?
+  A.B.C.D  High IP address
+  <cr>
+Router(config)#ip dhcp excluded-address 192.168.6.1 192.168.1.10
+Router(config)#ip dh
+Router(config)#ip dhcp poo
+Router(config)#ip dhcp pool Br_Sw1
+Router(dhcp-config)#?
+  default-router  Default routers
+  dns-server      Set name server
+  domain-name     Domain name
+  exit            Exit from DHCP pool configuration mode
+  network         Network number and mask
+  no              Negate a command or set its defaults
+  option          Raw DHCP options
+Router(dhcp-config)#net
+Router(dhcp-config)#network 192.168.6.0 ?
+  A.B.C.D  Network mask
+Router(dhcp-config)#network 192.168.6.0 255.255.255.0
+Router(dhcp-config)#default-router 192.168.6.1
+Router(dhcp-config)#dns-server 5.5.5.5
+Router(dhcp-config)#%DHCPD-4-PING_CONFLICT: 
+DHCP address conflict:  server pinged 192.168.6.1.
+Router(dhcp-config)#exit
+Router(config)#ho
+Router(config)#hostname Br_Router1
+Br_Router1(config)#do wr
+Building configuration...
+[OK]
+Br_Router1(config)#^Z
+Br_Router1#
+%SYS-5-CONFIG_I: Configured from console by console
+Br_Router1#
+Br_Router1#

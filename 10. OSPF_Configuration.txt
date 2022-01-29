@@ -1,0 +1,38 @@
+
+OSPF_Configuration
+....................................................................................................
+
+HQ_R#
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#ro
+HQ_R(config)#router os
+HQ_R(config)#router ospf 15
+HQ_R(config-router)#do sh ip route
+HQ_R(config-router)#net
+HQ_R(config-router)#network 10.10.10.0 0.0.0.255 area 0
+HQ_R(config-router)#network 192.168.10.0 0.0.0.255 area 0
+HQ_R(config-router)#network 192.168.30.0 0.0.0.255 area 0
+HQ_R(config-router)#network 192.168.50.0 0.0.0.255 area 0
+HQ_R(config-router)#do wr
+Building configuration...
+[OK]
+HQ_R(config-router)#
+HQ_R(config-router)#
+HQ_R(config-router)#
+
+
+
+Br_Router1(config)#
+Br_Router1(config)#router ospf 20
+Br_Router1(config-router)#do sh ip route
+Br_Router1(config-router)#net
+Br_Router1(config-router)#network 192.168.6.0 0.0.0.255 area 0
+Br_Router1(config-router)#network 10.10.10.0 0.0.0.255 area 0
+Br_Router1(config-router)#
+00:13:01: %OSPF-5-ADJCHG: Process 20, Nbr 192.168.50.1 on Tunnel20 from LOADING to FULL, Loading Done
+
+Br_Router1(config-router)#do wr
+Building configuration...
+[OK]
+Br_Router1(config-router)#

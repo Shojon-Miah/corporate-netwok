@@ -1,0 +1,82 @@
+
+EtherChannel_Configuration
+......................................................
+
+Sw_1(config)#int ra
+Sw_1(config)#int range fa 0/1-4
+Sw_1(config-if-range)#duplex full 
+Sw_1(config-if-range)#speed 100
+Sw_1(config-if-range)#switchport mode trunk 
+Sw_1(config-if-range)#channel-protocol lacp 
+Sw_1(config-if-range)#channel-group 1 mode active 
+Sw_1(config-if-range)#
+Creating a port-channel interface Port-channel 1
+Sw_1(config-if-range)#
+Sw_1(config-if-range)#do wr
+Building configuration...
+[OK]
+Sw_1(config-if-range)#^Z
+Sw_1#
+
+
+
+Core_Sw>en
+Password: 
+Core_Sw#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Core_Sw(config)#int ra
+Core_Sw(config)#int range fa 0/1-4
+Core_Sw(config-if-range)#duplex full 
+Core_Sw(config-if-range)#speed 100
+Core_Sw(config-if-range)#switchport mode trunk 
+Core_Sw(config-if-range)#channel-protocol lacp 
+Core_Sw(config-if-range)#channel-group 1 mode passive 
+Core_Sw(config-if-range)#
+Creating a port-channel interface Port-channel 1
+%LINK-5-CHANGED: Interface Port-channel1, changed state to up
+Core_Sw(config-if-range)#do wr
+Building configuration...
+[OK]
+Core_Sw(config-if-range)#do sh int tr
+Core_Sw(config-if-range)#
+
+
+
+Core_Sw#
+Core_Sw#
+Core_Sw#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Core_Sw(config)#int range fa 0/5-8
+Core_Sw(config-if-range)#duplex full 
+Core_Sw(config-if-range)#
+Core_Sw(config-if-range)#speed 100
+Core_Sw(config-if-range)#switchport mode trunk 
+Core_Sw(config-if-range)#
+Core_Sw(config-if-range)#channel-protocol pagp 
+Core_Sw(config-if-range)#channel-group 2 mode auto
+Core_Sw(config-if-range)#
+Creating a port-channel interface Port-channel 2
+Core_Sw(config-if-range)#
+Core_Sw(config-if-range)#do wr
+Building configuration...
+[OK]
+Core_Sw(config-if-range)#^Z
+Core_Sw#
+%SYS-5-CONFIG_I: Configured from console by console
+Core_Sw#
+Core_Sw#
+
+
+Sw_2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Sw_2(config)#
+Sw_2(config)#int range fa 0/1-4
+Sw_2(config-if-range)#duplex full 
+Sw_2(config-if-range)#speed 100
+Sw_2(config-if-range)#switchport mode trunk 
+Sw_2(config-if-range)#channel-protocol pagp 
+Sw_2(config-if-range)#channel-group 2 mode desirable 
+Sw_2(config-if-range)#
+Creating a port-channel interface Port-channel 2
+Sw_2#sh int tr
+Sw_2#sh int trunk 

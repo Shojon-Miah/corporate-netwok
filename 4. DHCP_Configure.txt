@@ -1,0 +1,111 @@
+
+
+DHCP_Configure
+- - -- - - -- - -- -  - - - - - - - - - - - - - - - - - - - - - -- - - - - -- - - - - - -- - - - - -- - - - -- 
+User Access Verification
+Password: 
+
+HQ_R>en
+Password: 
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#dh
+HQ_R(config)#ip dhcp ?
+  excluded-address  Prevent DHCP from assigning certain addresses
+  pool              Configure DHCP address pools
+  relay             DHCP relay agent parameters
+HQ_R(config)#ip dhcp exl
+HQ_R(config)#ip dhcp exlud
+HQ_R(config)#ip dhcp excl
+HQ_R(config)#ip dhcp excluded-address ?
+  A.B.C.D  Low IP address
+HQ_R(config)#ip dhcp excluded-address 192.168.10.1 192.168.10.50
+HQ_R(config)#ip dhcp excluded-address 192.168.10.101 192.168.10.255
+HQ_R(config)#ip dhcp poo
+HQ_R(config)#ip dhcp pool LAN_10
+HQ_R(dhcp-config)#?
+  default-router  Default routers
+  dns-server      Set name server
+  domain-name     Domain name
+  exit            Exit from DHCP pool configuration mode
+  network         Network number and mask
+  no              Negate a command or set its defaults
+  option          Raw DHCP options
+HQ_R(dhcp-config)#net
+HQ_R(dhcp-config)#network 192.168.10.1 ?
+  A.B.C.D  Network mask
+HQ_R(dhcp-config)#network 192.168.10.1 255.255.255.0
+HQ_R(dhcp-config)#de
+HQ_R(dhcp-config)#default-router 192.168.10.1
+HQ_R(dhcp-config)#dns
+HQ_R(dhcp-config)#dns-server 8.8.8.8
+HQ_R(dhcp-config)#do wr
+HQ_R(dhcp-config)#
+HQ_R(dhcp-config)#
+
+Password: 
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#ip dh
+HQ_R(config)#ip dhcp excl
+HQ_R(config)#ip dhcp excluded-address 192.168.20.1 192.168.20.50
+HQ_R(config)#ip dhcp excluded-address 192.168.20.101 192.168.20.255
+HQ_R(config)#ip dhcp po
+HQ_R(config)#ip dhcp pool LAN_20
+HQ_R(dhcp-config)#?
+  default-router  Default routers
+  dns-server      Set name server
+  domain-name     Domain name
+  exit            Exit from DHCP pool configuration mode
+  network         Network number and mask
+  no              Negate a command or set its defaults
+  option          Raw DHCP options
+HQ_R(dhcp-config)#net
+HQ_R(dhcp-config)#network 192.168.20.1 255.255.255.0
+HQ_R(dhcp-config)#default-router 192.168.20.1
+HQ_R(dhcp-config)#dns-server 4.4.4.4
+HQ_R(dhcp-config)#do wr
+HQ_R(dhcp-config)#exit
+HQ_R(config)#do wr
+Building configuration...
+[OK]
+HQ_R(config)#
+HQ_R(config)#
+
+
+HQ_R(config)#
+HQ_R(config)#
+HQ_R(config)#ip dhcp excluded-address 192.168.30.1 192.168.30.50
+HQ_R(config)#ip dhcp excluded-address 192.168.30.101 192.168.30.255
+HQ_R(config)#ip dhcp pool LAN_30
+HQ_R(dhcp-config)#network 192.168.30.1 255.255.255.0
+HQ_R(dhcp-config)#default-router 192.168.30.1
+HQ_R(dhcp-config)#default-router 192.168.30.1
+HQ_R(dhcp-config)#dns-server 4.4.4.4
+HQ_R(dhcp-config)#exit
+HQ_R(config)#do wr
+Building configuration...
+[OK]
+
+HQ_R(config)#
+HQ_R(config)#
+HQ_R(config)#ip dhcp excluded-address 192.168.40.1 192.168.40.50
+HQ_R(config)#ip dhcp excluded-address 192.168.40.101 192.168.40.255
+HQ_R(config)#ip dhcp pool LAN_40
+HQ_R(dhcp-config)#network 192.168.40.1 255.255.255.0
+HQ_R(dhcp-config)#default-router 192.168.40.1
+HQ_R(dhcp-config)#dns-server 7.7.7.7
+HQ_R(dhcp-config)#
+
+Password: 
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#ip dhcp excl
+HQ_R(config)#ip dhcp excluded-address 192.168.50.1 192.168.50.50
+HQ_R(config)#ip dhcp excluded-address 192.168.50.101 192.168.50.255
+HQ_R(config)#ip dhcp pool LAN_50
+HQ_R(dhcp-config)#network 192.168.50.1 255.255.255.0
+HQ_R(dhcp-config)#default-router 192.168.50.1
+HQ_R(dhcp-config)#dns
+HQ_R(dhcp-config)#dns-server 8.8.8.8
+HQ_R(dhcp-config)#

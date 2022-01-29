@@ -1,0 +1,139 @@
+
+
+
+
+Sw_1(config)#
+Sw_1(config)#int ra
+Sw_1(config)#int range fa 0/5-24
+Sw_1(config-if-range)#swi
+Sw_1(config-if-range)#switchport ?
+  access         Set access mode characteristics of the interface
+  mode           Set trunking mode of the interface
+  nonegotiate    Device will not engage in negotiation protocol on this
+                 interface
+  port-security  Security related command
+  priority       Set appliance 802.1p priority
+  protected      Configure an interface to be a protected port
+  trunk          Set trunking characteristics of the interface
+  voice          Voice appliance attributes
+Sw_1(config-if-range)#switchport mo
+Sw_1(config-if-range)#switchport mode acc
+Sw_1(config-if-range)#switchport mode access 
+Sw_1(config-if-range)#swi
+Sw_1(config-if-range)#switchport po
+Sw_1(config-if-range)#switchport port-security 
+Sw_1(config-if-range)#switchport port-security ?
+  aging        Port-security aging commands
+  mac-address  Secure mac address
+  maximum      Max secure addresses
+  violation    Security violation mode
+  <cr>
+Sw_1(config-if-range)#switchport port-security maxi
+Sw_1(config-if-range)#switchport port-security maximum ?
+  <1-132>  Maximum addresses
+Sw_1(config-if-range)#switchport port-security maximum 2
+Sw_1(config-if-range)#switchport port-security mac
+Sw_1(config-if-range)#switchport port-security mac-address ?
+  H.H.H   48 bit mac address
+  sticky  Configure dynamic secure addresses as sticky
+Sw_1(config-if-range)#switchport port-security mac-address sti
+Sw_1(config-if-range)#switchport port-security mac-address sticky 
+Sw_1(config-if-range)#switchport port-security vio
+Sw_1(config-if-range)#switchport port-security violation ?
+  protect   Security violation protect mode
+  restrict  Security violation restrict mode
+  shutdown  Security violation shutdown mode
+Sw_1(config-if-range)#switchport port-security violation shu
+Sw_1(config-if-range)#switchport port-security violation shutdown 
+Sw_1(config-if-range)#
+Sw_1(config-if-range)#
+Sw_1(config-if-range)#exit
+Sw_1(config)#do wr
+Building configuration...
+[OK]
+Sw_1(config)#
+
+
+Switch#
+Switch#sh swi
+Switch#sh swit
+Switch#sh po
+Switch#sh port-security 
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#ho
+Switch(config)#hostname Core_swi
+Switch(config)#hostname Core_Sw
+Core_Sw(config)#int ra
+Core_Sw(config)#int range fa 0/9-24
+Core_Sw(config-if-range)#swi
+Core_Sw(config-if-range)#switchport mo
+Core_Sw(config-if-range)#switchport mode ac
+Core_Sw(config-if-range)#switchport mode access 
+Core_Sw(config-if-range)#
+Core_Sw(config-if-range)#swi
+Core_Sw(config-if-range)#switchport po
+Core_Sw(config-if-range)#switchport port-security 
+Core_Sw(config-if-range)#
+Core_Sw(config-if-range)#swi
+Core_Sw(config-if-range)#switchport port-security ?
+  aging        Port-security aging commands
+  mac-address  Secure mac address
+  maximum      Max secure addresses
+  violation    Security violation mode
+  <cr>
+Core_Sw(config-if-range)#switchport port-security maxi
+Core_Sw(config-if-range)#switchport port-security maximum 2
+Core_Sw(config-if-range)#switchport port-security mac
+Core_Sw(config-if-range)#switchport port-security mac-address sti
+Core_Sw(config-if-range)#switchport port-security mac-address sticky 
+Core_Sw(config-if-range)#switchport port-security vio
+Core_Sw(config-if-range)#switchport port-security violation shu
+Core_Sw(config-if-range)#switchport port-security violation shutdown 
+Core_Sw(config-if-range)#shu
+Core_Sw(config-if-range)#shutdown 
+Core_Sw(config-if-range)#
+Core_Sw(config-if-range)#exit
+Core_Sw(config)#do wr
+Building configuration...
+[OK]
+Core_Sw(config)#^Z
+Core_Sw#
+%SYS-5-CONFIG_I: Configured from console by console
+Core_Sw#sh po
+Core_Sw#sh port-security 
+
+
+
+
+Switch>en
+Password: 
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hos
+Switch(config)#hostname Sw_2
+Sw_2(config)#int ra
+Sw_2(config)#int range fa 0/5-24
+Sw_2(config-if-range)#swi
+Sw_2(config-if-range)#switchport mode acc
+Sw_2(config-if-range)#switchport mode access 
+Sw_2(config-if-range)#swit
+Sw_2(config-if-range)#switchport po
+Sw_2(config-if-range)#switchport port-security 
+Sw_2(config-if-range)#
+Sw_2(config-if-range)#switchport port-security ?
+  aging        Port-security aging commands
+  mac-address  Secure mac address
+  maximum      Max secure addresses
+  violation    Security violation mode
+  <cr>
+Sw_2(config-if-range)#switchport port-security maxi
+Sw_2(config-if-range)#switchport port-security maximum 2
+Sw_2(config-if-range)#switchport port-security mac
+Sw_2(config-if-range)#switchport port-security mac-address sti
+Sw_2(config-if-range)#switchport port-security mac-address sticky 
+Sw_2(config-if-range)#switchport port-security vio
+Sw_2(config-if-range)#switchport port-security violation shu
+Sw_2(config-if-range)#switchport port-security violation shutdown 
+Sw_2(config-if-range)#shu
+Sw_2(config-if-range)#shutdown 

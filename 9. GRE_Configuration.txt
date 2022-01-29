@@ -1,0 +1,76 @@
+
+GRE_Configuration
+............................................................................................................
+
+Password: 
+	
+HQ_R#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+HQ_R(config)#int tu
+HQ_R(config)#int tunnel 20
+HQ_R(config-if)#
+%LINK-5-CHANGED: Interface Tunnel20, changed state to up
+HQ_R(config-if)#?
+  exit      Exit from interface configuration mode
+  ip        Interface Internet Protocol config commands
+  ipv6      IPv6 interface subcommands
+  no        Negate a command or set its defaults
+  shutdown  Shutdown the selected interface
+  tunnel    protocol-over-protocol tunneling
+HQ_R(config-if)#ip ?
+  address  Set the IP address of an interface
+HQ_R(config-if)#ip add
+HQ_R(config-if)#ip address 10.10.10.2 255.255.255.0
+HQ_R(config-if)#no shutdown 
+HQ_R(config-if)#tu
+HQ_R(config-if)#tunnel ?
+  destination  destination of tunnel
+  mode         tunnel encapsulation method
+  source       source of tunnel packets
+HQ_R(config-if)#tunnel sou
+HQ_R(config-if)#tunnel source ?
+  Ethernet         IEEE 802.3
+  FastEthernet     FastEthernet IEEE 802.3
+  GigabitEthernet  GigabitEthernet IEEE 802.3z
+  Loopback         Loopback interface
+  Serial           Serial
+HQ_R(config-if)#tunnel source fa
+HQ_R(config-if)#tunnel source fastEthernet 0/0
+HQ_R(config-if)#tunnel mode ?
+  gre     generic route encapsulation protocol
+  ipv6ip  IPv6 over IP encapsulation
+HQ_R(config-if)#tunnel mode gre ?
+  ip  over IP
+HQ_R(config-if)#tunnel mode gre ip
+HQ_R(config-if)#tunnel destination 25.25.25.2
+HQ_R(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel20, changed state to up
+HQ_R(config-if)#
+HQ_R(config-if)#exit
+HQ_R(config)#do wr
+Building configuration...
+[OK]
+HQ_R(config)#
+
+
+Password: 
+Br_Router1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Br_Router1(config)#int tunnel ?
+  <0-2147483647>  Tunnel interface number
+Br_Router1(config)#int tunnel 20
+Br_Router1(config-if)#
+%LINK-5-CHANGED: Interface Tunnel20, changed state to up
+Br_Router1(config-if)#ip add
+Br_Router1(config-if)#ip address 10.10.10.1 255.255.255.0
+Br_Router1(config-if)#no shutdown 
+Br_Router1(config-if)#tunnel source fa 0/0
+Br_Router1(config-if)#tu
+Br_Router1(config-if)#tunnel destination 13.13.13.1
+Br_Router1(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel20, changed state to up
+Br_Router1(config-if)#tun
+Br_Router1(config-if)#tunnel mode gre ip
+Br_Router1(config-if)#exit
+Br_Router1(config)#
+Br_Router1(config)#
